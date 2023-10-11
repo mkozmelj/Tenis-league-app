@@ -1,0 +1,52 @@
+@import "../../common/variables.scss";
+
+.table {
+  width: 100vw;
+  padding: 8px;
+
+  table {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid $gray-color;
+
+    thead {
+      width: 100%;
+      border-bottom: 1px solid $gray-color;
+      background-color: rgba($gray-color, 0.5);
+    }
+
+    th,
+    td {
+      width: 10%;
+
+      &.name {
+        width: 40%;
+        text-align: left;
+      }
+    }
+
+    tbody {
+      tr {
+        border: 1px solid $gray-color;
+
+        &:nth-child(-n + 3) {
+          background-color: rgba($color: $green-color, $alpha: 0.2);
+        }
+
+        &:nth-child(1),
+        &:nth-child(2) {
+          background-color: rgba($color: $green-color, $alpha: 0.5);
+        }
+
+        &:nth-last-child(-n + 3) {
+          background-color: rgba($color: $red-color, $alpha: 0.3);
+        }
+
+        &:nth-last-child(1),
+        &:nth-last-child(2) {
+          background-color: rgba($color: $red-color, $alpha: 0.7);
+        }
+      }
+    }
+  }
+}

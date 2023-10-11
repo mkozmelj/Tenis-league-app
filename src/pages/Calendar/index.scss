@@ -1,0 +1,72 @@
+@import "../../common/variables.scss";
+
+.calendar {
+  padding: 16px;
+}
+
+.day {
+  margin-top: 32px;
+  width: 100%;
+  overflow-x: scroll;
+
+  table {
+    width: 100%;
+    border: 1px solid $gray-color;
+    text-align: center;
+    table-layout: fixed;
+    white-space: pre-line;
+
+    tr,
+    td {
+      border: 1px solid $gray-color;
+    }
+
+    tr {
+      width: 100%;
+    }
+
+    td {
+      &.spaced {
+        width: 2px;
+        background-color: gray;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    table {
+      width: 300vw;
+      font-size: 0.4em;
+    }
+  }
+}
+
+.legend {
+  display: flex;
+  column-gap: 16px;
+  margin-top: 16px;
+  margin-bottom: 64px;
+
+  div {
+    width: 24px;
+    margin-right: 8px;
+  }
+
+  p {
+    width: max-content;
+  }
+}
+
+.league {
+  &-1 {
+    background-color: rgba($color: $primary-color, $alpha: 1);
+  }
+
+  &-2 {
+    background-color: rgba($color: $primary-color, $alpha: 0.6);
+  }
+
+  &-3 {
+    background-color: rgba($color: $primary-color, $alpha: 0.3);
+  }
+}

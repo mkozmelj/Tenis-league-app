@@ -1,0 +1,19 @@
+@import "../../common/variables.scss";
+
+.navbar {
+  width: 100vw;
+  background-color: rgba($primary-color, 0.8);
+  padding: 4px;
+  display: flex;
+  align-items: center;
+
+  a {
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 48px;
+      width: auto;
+    }
+  }
+}

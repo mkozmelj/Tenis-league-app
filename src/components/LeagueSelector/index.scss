@@ -1,0 +1,45 @@
+@import "../../common/variables.scss";
+
+.league-selector {
+  display: flex;
+  text-align: center;
+
+  &.mobile {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    justify-content: space-between;
+    border-top: 3px solid $gray-color;
+    background-color: white;
+
+    div {
+      padding: 16px;
+      flex: 1 1 0px;
+
+      &.active {
+        background-color: $primary-color;
+      }
+    }
+  }
+
+  &.desktop {
+    width: 30%;
+    margin-right: 16px;
+    margin-left: auto;
+    align-items: center;
+  }
+
+  div {
+    flex: 1 1 0px;
+    line-height: 20pšx;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.active {
+      font-weight: bold;
+      font-size: 16px;
+    }
+  }
+}

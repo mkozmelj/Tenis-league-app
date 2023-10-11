@@ -1,0 +1,72 @@
+@import "../../common/variables.scss";
+
+.matches {
+  text-align: left;
+  padding: 8px;
+  margin-bottom: 64px !important;
+
+  .categories {
+    text-align: center;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom: 3px solid $gray-color;
+
+    h2 {
+      padding: 4px 16px;
+      flex: 1 1 0px;
+
+      &.active {
+        background-color: $primary-color;
+      }
+    }
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .match {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+    border-bottom: 1px solid $gray-color;
+    padding: 4px;
+
+    p {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      span {
+        text-align: right;
+      }
+    }
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  .list {
+    display: flex;
+    width: 100%;
+    column-gap: 64px;
+    justify-content: space-around;
+
+    .match-list {
+      width: 50%;
+    }
+  }
+
+  a {
+    color: $primary-color;
+    text-align: center;
+    display: block;
+    margin: 16px auto;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
