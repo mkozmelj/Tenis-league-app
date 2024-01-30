@@ -2,12 +2,14 @@ import { useContext, useEffect, useState } from "react";
 import { getTableData } from "../../common/api";
 import { LeagueContext } from "../../common/context";
 import { Player } from "../../common/types";
+import { useNavigate } from "react-router";
 
 import "./index.scss";
 
 export function Table(): JSX.Element {
   const [players, setPlayers] = useState<Player[]>();
   const { league } = useContext(LeagueContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getTableData(league).then((response) => setPlayers(response));
@@ -33,7 +35,16 @@ export function Table(): JSX.Element {
         </thead>
         <tbody>
           {players.map((player: Player, index: number) => (
-            <tr key={index}>
+            <tr
+              key={index}
+              onClick={() =>
+                navigate(
+                  `/player/${player.firstname}-${player.lastname
+                    .split(" ")
+                    .join("-")}`
+                )
+              }
+            >
               <td>{index + 1}</td>
               <td className="name">
                 {player.firstname} {player.lastname}

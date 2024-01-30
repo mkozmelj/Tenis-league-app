@@ -37,3 +37,7 @@ export interface MatchDay {
 export interface MatchesForDate {
   [key: string]: Match[];
 }
+
+export interface PlayerName {
+  name: string;
+}

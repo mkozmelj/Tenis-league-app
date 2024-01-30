@@ -15,6 +15,12 @@
       background-color: rgba($gray-color, 0.5);
     }
 
+    tr {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
     th,
     td {
       width: 10%;

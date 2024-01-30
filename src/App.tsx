@@ -9,6 +9,7 @@ import { Home } from "./pages/Home";
 import { Calendar } from "./pages/Calendar";
 
 import "./App.scss";
+import { Player } from "./pages/Player";
 
 function App() {
   setDefaultOptions({ locale: sl });
@@ -21,6 +22,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/calendar" element={<Calendar />} />
+            <Route path="/player/:name" element={<Player />} />
           </Routes>
           {isMobile() && <LeagueSelector />}
         </Router>

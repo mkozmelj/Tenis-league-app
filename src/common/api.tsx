@@ -1,6 +1,6 @@
 import axios from "axios";
 import { toDate, parse } from "date-fns";
-import { Player, Match, Sheet } from "./types";
+import { Player, Match, Sheet, PlayerName } from "./types";
 
 export async function getData(
   liga: number,
@@ -86,4 +86,12 @@ export async function getAllMatches(): Promise<Match[]> {
   ]);
 
   return [...response[0], ...response[1], ...response[2]];
+}
+
+export async function getPlayers(league: number): Promise<PlayerName[]> {
+  return getData(league, "A4:A14").then((data: string[][]) => {
+    return data.map((player: string[]) => ({
+      name: player[0],
+    }));
+  });
 }
