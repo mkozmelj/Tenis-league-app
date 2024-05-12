@@ -71,9 +71,10 @@ export function Player() {
         {matches.map((match) => (
           <div key={match.id}>
             <p>{`${match.first_player.name} : ${match.second_player.name} ${
-              match.played &&
-              `(${match.first_player.score}:${match.second_player.score}`
-            })`}</p>
+              match.played
+                ? `(${match.first_player.score}:${match.second_player.score})`
+                : ""
+            }`}</p>
           </div>
         ))}
       </div>
