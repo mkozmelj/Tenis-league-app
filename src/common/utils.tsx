@@ -15,7 +15,7 @@ export function getShortName(name: string) {
 export function getMatchForCourtAndHour(
   hour: number,
   matches?: Match[]
-): { match: string; league: number } | undefined {
+): { match: string; league: string } | undefined {
   if (!matches) {
     return undefined;
   }

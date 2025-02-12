@@ -25,3 +25,5 @@ yarn-error.log*
 
 # deploy script
 deploy.sh
+
+.idea

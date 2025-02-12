@@ -8,7 +8,7 @@ export interface Player {
   plus: number;
   minus: number;
   points: number;
-  league: number;
+  league: string;
 }
 
 interface MatchPlayer {
@@ -23,7 +23,7 @@ export interface Match {
   played?: boolean;
   date?: Date;
   court?: number;
-  league: number;
+  league: string;
 }
 
 export interface Sheet {

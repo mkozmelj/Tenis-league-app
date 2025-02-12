@@ -3,18 +3,18 @@ import { toDate, parse } from "date-fns";
 import { Player, Match, Sheet, PlayerName } from "./types";
 
 export async function getData(
-  liga: number,
+  league: string,
   range: string
 ): Promise<string[][]> {
   return axios
     .get(
-      `https://sheets.googleapis.com/v4/spreadsheets/${process.env.REACT_APP_GSHEETS_ID}/values/${liga}.liga!${range}?key=${process.env.REACT_APP_GSHEETS_KEY}`,
+      `https://sheets.googleapis.com/v4/spreadsheets/${process.env.REACT_APP_GSHEETS_ID}/values/${league}!${range}?key=${process.env.REACT_APP_GSHEETS_KEY}`,
       {}
     )
     .then((response) => response.data.values);
 }
 
-export async function getLeagues() {
+export async function getLeagues(): Promise<string[]> {
   return axios
     .get(
       `https://sheets.googleapis.com/v4/spreadsheets/${process.env.REACT_APP_GSHEETS_ID}?key=${process.env.REACT_APP_GSHEETS_KEY}`,
@@ -22,17 +22,20 @@ export async function getLeagues() {
     )
     .then((response) => {
       const sheets = response.data.sheets;
-      return sheets.map(
-        (sheet: Sheet) => +sheet.properties.title.split(".")[0]
-      );
+      return sheets.map((sheet: Sheet) => sheet.properties.title);
     });
 }
 
-export async function getTableData(league: number): Promise<Player[]> {
+export async function getTableData(league: string): Promise<Player[]> {
   return getData(league, "C4:I14").then((data: string[][]) => {
     const players = [] as Player[];
-    data.map((player: string[], index: number) => {
-      const nameArray = player[0].split(" ");
+    console.log(data);
+    data.forEach((player: string[], index: number) => {
+      if (player.length < 3) {
+        return;
+      }
+
+      const nameArray = player[0]?.split(" ");
       players.push({
         id: index,
         firstname: nameArray[0],
@@ -51,7 +54,7 @@ export async function getTableData(league: number): Promise<Player[]> {
   });
 }
 
-export async function getMatches(league: number): Promise<Match[]> {
+export async function getMatches(league: string): Promise<Match[]> {
   return getData(league, "A17:G61").then((data: string[][]) => {
     const matches = [] as Match[];
     data.map((match: string[], index: number) => {
@@ -79,16 +82,16 @@ export async function getMatches(league: number): Promise<Match[]> {
 }
 
 export async function getAllMatches(): Promise<Match[]> {
-  const response = await Promise.all([
-    getMatches(1),
-    getMatches(2),
-    getMatches(3),
-  ]);
+  const leagues = await getLeagues();
+
+  const response = await Promise.all(
+    leagues.map((league) => getMatches(league))
+  );
 
   return [...response[0], ...response[1], ...response[2]];
 }
 
-export async function getPlayers(league: number): Promise<PlayerName[]> {
+export async function getPlayers(league: string): Promise<PlayerName[]> {
   return getData(league, "A4:A14").then((data: string[][]) => {
     return data.map((player: string[]) => ({
       name: player[0],

@@ -9,11 +9,11 @@ import "./index.scss";
 export function LeagueSelector(): JSX.Element {
   const navigate = useNavigate();
   const { league, setLeague } = useContext(LeagueContext);
-  const [leagues, setLeagues] = useState<number[]>();
+  const [leagues, setLeagues] = useState<string[]>();
 
-  const handleChangeLeague = useCallback((index: number) => {
-    setLeague(index);
-    localStorage.setItem("league", index.toString());
+  const handleChangeLeague = useCallback((newLeague: string) => {
+    setLeague(newLeague);
+    localStorage.setItem("league", newLeague);
   }, []);
 
   useEffect(() => {
@@ -26,13 +26,13 @@ export function LeagueSelector(): JSX.Element {
 
   return (
     <div className={`league-selector ${isMobile() ? "mobile" : "desktop"}`}>
-      {leagues.map((index: number) => (
+      {leagues.map((element: string) => (
         <div
-          key={index}
-          className={`${league === index ? "active" : ""}`}
-          onClick={() => handleChangeLeague(index)}
+          key={element}
+          className={`${league === element ? "active" : ""}`}
+          onClick={() => handleChangeLeague(element)}
         >
-          {index}. liga
+          {element}
         </div>
       ))}
       <div className="calendar" onClick={() => navigate("/calendar")}>

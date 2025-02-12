@@ -3,6 +3,7 @@
 .league-selector {
   display: flex;
   text-align: center;
+  column-gap: 8px;
 
   &.mobile {
     position: fixed;
@@ -11,10 +12,12 @@
     justify-content: space-between;
     border-top: 3px solid $gray-color;
     background-color: white;
+    column-gap: 0;
 
     div {
-      padding: 16px;
-      flex: 1 1 0px;
+      padding: 16px 8px;
+      width: 20%;
+      flex: 1 1 0;
 
       &.active {
         background-color: $primary-color;
@@ -23,15 +26,15 @@
   }
 
   &.desktop {
-    width: 30%;
     margin-right: 16px;
     margin-left: auto;
     align-items: center;
   }
 
   div {
-    flex: 1 1 0px;
-    line-height: 20pšx;
+    flex: 1 1 0;
+    line-height: 20px;
+    white-space: nowrap;
 
     &:hover {
       cursor: pointer;

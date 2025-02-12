@@ -39,9 +39,9 @@ export function Table(): JSX.Element {
               key={index}
               onClick={() =>
                 navigate(
-                  `/player/${player.firstname}-${player.lastname
-                    .split(" ")
-                    .join("-")}`
+                  `/player/${player.firstname}-${
+                    player.lastname ?? "".split(" ").join("-")
+                  }`
                 )
               }
             >
