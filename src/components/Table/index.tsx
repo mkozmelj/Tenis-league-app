@@ -44,6 +44,7 @@ export function Table(): JSX.Element {
                   }`
                 )
               }
+              className={league.split("-").length > 1 ? "subgroup" : ""}
             >
               <td>{index + 1}</td>
               <td className="name">

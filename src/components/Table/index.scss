@@ -52,6 +52,18 @@
         &:nth-last-child(2) {
           background-color: rgba($color: $red-color, $alpha: 0.7);
         }
+
+        &.subgroup {
+          background-color: transparent;
+
+          &:nth-child(-n + 4) {
+            background-color: rgba($color: $green-color, $alpha: 0.5);
+          }
+
+          &:nth-last-child(-n + 3) {
+            background-color: rgba($color: $red-color, $alpha: 0.5);
+          }
+        }
       }
     }
   }
